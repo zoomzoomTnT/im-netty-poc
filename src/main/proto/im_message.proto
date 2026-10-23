@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_package = "com.example.im.proto";
+option java_outer_classname = "ImMessageProto";
+
+enum Command {
+  UNKNOWN = 0;
+  LOGIN = 1;
+  HEARTBEAT = 2;
+  PRIVATE_MSG = 3;
+  ACK = 4;
+  LOGOUT = 5;
+}
+
+message ImMessage {
+  Command command = 1;
+  string from = 2;
+  string to = 3;
+  string content = 4;
+  int64 timestamp = 5;
+  string token = 6;   // HMAC or other
+}
